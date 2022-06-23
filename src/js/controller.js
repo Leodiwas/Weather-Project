@@ -9,7 +9,10 @@ const searchCountry = (country) => {
 };
 
 const init = () => {
+  // Default Location
+  searchCountry("biratnagar");
+
+  // Searched Location
   WeatherAppView._searchInput(searchCountry);
-  // searchCountry("nepal");
 };
 init();

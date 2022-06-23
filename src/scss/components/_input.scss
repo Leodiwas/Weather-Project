@@ -41,7 +41,7 @@
 
 @include m.respond(mobile) {
   svg#search path.search__path {
-    fill: #fff;
+    fill: #fff !important;
   }
 }
 

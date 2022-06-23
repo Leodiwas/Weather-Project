@@ -2,6 +2,8 @@ import { weatherState } from "./model.js";
 
 const API_KEY = "1c3104c319d355090fa8b3087965cc96";
 
+// export const defaultPosition = async
+
 export const AJAX = async (city) => {
   try {
     // City Weather Api
