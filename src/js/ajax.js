@@ -32,7 +32,6 @@ export const AJAX = async (city) => {
 
     return weatherState(cityWeatherData, countryWeatherData);
   } catch (err) {
-    console.error(err);
     throw err;
   }
 };

@@ -1,3 +1,5 @@
+import { state } from "../model.js";
+
 export default class AppView {
   _parent = document.querySelector(".grid");
   _overlayEl = document.querySelector(".overlay");
@@ -8,6 +10,8 @@ export default class AppView {
   }
 
   _clear() {
+    state.daily.icon = [];
+    state.daily.main = [];
     this._parent.innerHTML = "";
   }
 

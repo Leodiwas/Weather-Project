@@ -16,10 +16,14 @@
   .Cards {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     padding: 2rem;
     width: 18.2rem;
     transition: all 0.5s ease;
+    box-shadow: rgba(v.$color-black, 1) 0 0.6rem 1.6rem;
 
     @include m.respond(mobile) {
       margin-bottom: 2rem;
@@ -29,33 +33,19 @@
       align-items: center;
       border-radius: 0.8rem;
       background-color: v.$background-black;
-      box-shadow: rgba(v.$color-black, 1) 0 0.6rem 1.6rem;
     }
 
     &:hover {
-      transform: scale(1.1);
-      box-shadow: rgba(v.$color-black, 1) 0 0.6rem 1.6rem;
+      transform: scale(1.05);
     }
 
-    .time {
-      margin-bottom: 6rem;
-
-      @include m.respond(mobile) {
-        margin-bottom: 9rem;
-      }
+    .weekday {
+      margin-bottom: 2rem;
     }
 
-    h2 {
-      margin-bottom: 1.6rem;
-    }
-
-    h6 {
-      .temp__dot::before {
-        height: 1rem;
-        width: 1rem;
-        top: -0.4rem;
-        border: 0.28rem solid v.$color-white;
-      }
+    figure {
+      height: 10rem;
+      width: 12rem;
     }
   }
 

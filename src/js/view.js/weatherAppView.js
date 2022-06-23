@@ -3,9 +3,27 @@ import AppView from "./appView.js";
 class WeatherAppView extends AppView {
   constructor() {
     super();
+    this._setDate();
+  }
+
+  _setDate() {
+    return setInterval(() => {
+      return (document.querySelector(".date").textContent =
+        new Intl.DateTimeFormat("en-GB", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          weekday: "short",
+          second: "numeric",
+        }).format(new Date()));
+    }, 1000);
   }
 
   _generateMarkup(data) {
+    console.log(data.daily);
+
     const markUp = `
     <!-- left -->
     <section class="grid__left">
@@ -74,57 +92,9 @@ class WeatherAppView extends AppView {
     </section>
     <!-- bottom -->
     <section class="grid__bottom">
-      <button class="btn btn-text grid__bottom-weekday">< Friday</button>
+      <h4 class="grid__bottom-date date">${this._date}</h4>
       <div class="Weather-Cards">
-        <article class="Cards">
-          <h5 class="time">3AM</h5>
-          <h2>28&#8451;</h2>
-          <h6 class="feedback">
-            Feels likes 30&#8451;</span>
-          </h6>
-        </article>
-        <article class="Cards">
-          <h5 class="time">4AM</h5>
-          <h2>30&#8451;</h2>
-          <h6 class="feedback">
-            Feels likes 30&#8451;</span>
-          </h6>
-        </article>
-        <article class="Cards">
-          <h5 class="time">5AM</h5>
-          <h2>38&#8451;</h2>
-          <h6 class="feedback">
-            Feels likes 30&#8451;</span>
-          </h6>
-        </article>
-        <article class="Cards">
-          <h5 class="time">6AM</h5>
-          <h2>40&#8451;</h2>
-          <h6 class="feedback">
-            Feels likes 30&#8451;</span>
-          </h6>
-        </article>
-        <article class="Cards">
-          <h5 class="time">7AM</h5>
-          <h2>-28&#8451;</h2>
-          <h6 class="feedback">
-            Feels likes 10&#8451;</span>
-          </h6>
-        </article>
-        <article class="Cards">
-          <h5 class="time">8AM</h5>
-          <h2>32&#8451;</h2>
-          <h6 class="feedback">
-            Feels likes 30&#8451;</span>
-          </h6>
-        </article>
-        <article class="Cards">
-          <h5 class="time">9AM</h5>
-          <h2>20&#8451;</h2>
-          <h6 class="feedback">
-            Feels likes 30&#8451;</span>
-          </h6>
-        </article>
+        ${data.daily}
       </div>
       <div class="cards__btns">
         <button class="btn btn__left"><</button>
@@ -134,6 +104,7 @@ class WeatherAppView extends AppView {
     `;
     this._clear();
     this._overlay();
+
     this._parent.insertAdjacentHTML("afterbegin", markUp);
   }
 }

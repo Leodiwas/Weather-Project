@@ -1,6 +1,7 @@
+import AppView from "./view.js/appView.js";
 import weatherAppView from "./view.js/weatherAppView.js";
 
-const state = {
+export const state = {
   city: "",
   current: {
     temp: "",
@@ -12,7 +13,7 @@ const state = {
     main: "",
   },
   wind: "",
-  hours: "",
+  daily: { icon: [], main: [] },
 };
 
 export const weatherState = (cityData, countryData) => {
@@ -32,6 +33,13 @@ export const weatherState = (cityData, countryData) => {
 
   const { speed } = cityData.wind;
   state.wind = speed;
+
+  countryData?.daily.forEach((el) => {
+    state.daily.icon.push(el.weather[0].icon);
+    state.daily.main.push(el.weather[0].main);
+  });
+
+  console.log(state.daily.main);
 
   return weatherAppView._generateMarkup(state);
 };
