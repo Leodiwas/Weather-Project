@@ -1,0 +1,53 @@
+@charset "UTF-8";
+@use "../abstracts/mixins" as m;
+@use "../abstracts/variables" as v;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+
+  @include m.respond(mobile) {
+    background-color: v.$background-black;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: initial;
+  &:hover {
+    color: initial;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.img-responsive,
+.video-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}

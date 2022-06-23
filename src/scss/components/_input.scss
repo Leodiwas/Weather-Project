@@ -1,0 +1,50 @@
+@use "../abstracts/mixins" as m;
+@use "../abstracts/variables" as v;
+
+.search__Box {
+  position: relative;
+  transition: all 0.5s ease;
+  transform: translateX(-26rem);
+
+  @include m.respond(mobile) {
+    transform: translateX(-50rem);
+  }
+
+  .search__svg {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    height: 1.6rem;
+    width: 1.8rem;
+    z-index: 1;
+  }
+
+  .search__input {
+    outline: none;
+    border: none;
+    height: 3.2rem;
+    width: 20rem;
+    border-radius: 0.4rem;
+    padding: 0.4rem 0.4rem 0.4rem 3.2rem;
+
+    @include m.respond(mobile) {
+      padding: 0.4rem 0.4rem 0.4rem 3.8rem;
+      height: 4.6rem;
+      width: 100%;
+      color: v.$color-white;
+      background-color: v.$background-black;
+      box-shadow: rgba(v.$color-black, 1) 0 0.6rem 1.6rem;
+    }
+  }
+}
+
+@include m.respond(mobile) {
+  svg#search path.search__path {
+    fill: #fff;
+  }
+}
+
+.active {
+  transform: translateX(0);
+}

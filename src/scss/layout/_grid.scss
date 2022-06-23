@@ -1,0 +1,139 @@
+@use "../abstracts/mixins" as m;
+@use "../abstracts/variables" as v;
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-rows: 52% 40%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "left right"
+    "bottom bottom";
+  height: 100vh;
+  width: 100vw;
+  background: url(https://images.unsplash.com/photo-1535025075092-5a1cf795130b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80)
+    no-repeat center center / cover;
+  transition: all 0.5s ease;
+
+  @include m.respond(mobile) {
+    grid-template-areas:
+      "left"
+      "right"
+      "bottom";
+
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+
+    background: none;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(v.$color-black, 0.55);
+
+    @include m.respond(mobile) {
+      height: 0;
+      width: 0;
+      background-color: none !important;
+    }
+  }
+
+  &__left,
+  &__right,
+  &__bottom {
+    padding: 3rem;
+    position: relative;
+    display: flex;
+  }
+
+  &__left {
+    grid-area: left;
+    flex-direction: column;
+
+    .img__left {
+      width: 14rem;
+    }
+
+    &-weather-logo {
+      height: 12rem;
+      width: 14rem;
+
+      @include m.respond(mobile) {
+        margin: auto;
+      }
+    }
+
+    &-weather-type {
+      margin-bottom: 0.6rem;
+
+      @include m.respond(mobile) {
+        margin-bottom: 1rem;
+      }
+    }
+    &-weather-cityName {
+      margin-bottom: 2rem;
+    }
+
+    &-weather-temp {
+      position: relative;
+      margin-bottom: 1.2rem;
+    }
+
+    button {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__right {
+    grid-area: right;
+    flex-direction: column;
+    margin-left: auto;
+    gap: 2.2rem;
+
+    @include m.respond(mobile) {
+      margin-left: 0;
+      align-items: center;
+    }
+
+    &-weather {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+
+      @include m.respond(mobile) {
+        width: 100%;
+        gap: 0;
+        justify-content: space-between;
+      }
+
+      &-logo {
+        height: 6rem;
+        width: 6rem;
+      }
+
+      &-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+
+        @include m.respond(mobile) {
+          align-items: flex-end;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    grid-area: bottom;
+    flex-direction: column;
+
+    &-weekday {
+      margin-bottom: 3rem;
+    }
+  }
+}
