@@ -61,16 +61,19 @@
     &__left {
       flex-direction: column;
 
-      .img__left {
-        width: 14rem;
-      }
-
       &-weather-logo {
         height: 12rem;
         width: 14rem;
 
         @include m.respond(mobile) {
-          margin: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+        }
+
+        .img__left {
+          width: 14rem;
         }
       }
 
