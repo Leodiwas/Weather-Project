@@ -4,27 +4,21 @@
 .grid {
   position: relative;
   display: grid;
-  grid-template-rows: 52% 40%;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 60% 40%;
+  grid-template-columns: 100%;
   grid-template-areas:
-    "left right"
-    "bottom bottom";
-  height: 100vh;
-  width: 100vw;
+    "up"
+    "bottom";
   background: url(https://images.unsplash.com/photo-1535025075092-5a1cf795130b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80)
     no-repeat center center / cover;
+  height: 100vh;
+  width: 100vw;
+  padding: 2rem;
   transition: all 0.5s ease;
 
   @include m.respond(mobile) {
-    grid-template-areas:
-      "left"
-      "right"
-      "bottom";
-
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: 1fr;
-
-    background: none;
+    height: 100%;
+    background: none !important;
   }
 
   &::before {
@@ -43,97 +37,116 @@
     }
   }
 
-  &__left,
-  &__right,
-  &__bottom {
-    padding: 3rem;
+  .grid__up {
+    grid-area: up;
     position: relative;
-    display: flex;
-  }
-
-  &__left {
-    grid-area: left;
-    flex-direction: column;
-
-    .img__left {
-      width: 14rem;
-    }
-
-    &-weather-logo {
-      height: 12rem;
-      width: 14rem;
-
-      @include m.respond(mobile) {
-        margin: auto;
-      }
-    }
-
-    &-weather-type {
-      margin-bottom: 0.6rem;
-
-      @include m.respond(mobile) {
-        margin-bottom: 1rem;
-      }
-    }
-    &-weather-cityName {
-      margin-bottom: 2rem;
-    }
-
-    &-weather-temp {
-      position: relative;
-      margin-bottom: 1.2rem;
-    }
-
-    button {
-      margin-bottom: 2rem;
-    }
-  }
-
-  &__right {
-    grid-area: right;
-    flex-direction: column;
-    margin-left: auto;
-    gap: 2.2rem;
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-areas: "up", "bottom";
+    margin-bottom: 4rem;
 
     @include m.respond(mobile) {
-      margin-left: 0;
-      align-items: center;
+      grid-row-gap: 3.2rem;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: 1fr;
     }
 
-    &-weather {
+    &__left,
+    &__right {
+      position: relative;
       display: flex;
-      align-items: center;
-      gap: 4rem;
+    }
 
-      @include m.respond(mobile) {
-        width: 100%;
-        gap: 0;
-        justify-content: space-between;
+    &__left {
+      flex-direction: column;
+
+      .img__left {
+        width: 14rem;
       }
 
-      &-logo {
-        height: 6rem;
-        width: 6rem;
-      }
-
-      &-info {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
+      &-weather-logo {
+        height: 12rem;
+        width: 14rem;
 
         @include m.respond(mobile) {
-          align-items: flex-end;
+          margin: auto;
+        }
+      }
+
+      &-weather-type {
+        margin-bottom: 0.6rem;
+
+        @include m.respond(mobile) {
+          margin-bottom: 1rem;
+        }
+      }
+      &-weather-cityName {
+        margin-bottom: 2rem;
+      }
+
+      &-weather-temp {
+        position: relative;
+        margin-bottom: 1.2rem;
+      }
+
+      button {
+        margin-bottom: 2rem;
+      }
+    }
+
+    &__right {
+      flex-direction: column;
+      margin-left: auto;
+      gap: 2.2rem;
+
+      @include m.respond(mobile) {
+        margin-left: 0;
+        align-items: center;
+      }
+
+      &-weather {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+
+        @include m.respond(mobile) {
+          width: 100%;
+          gap: 0;
+          justify-content: space-between;
+        }
+
+        &-logo {
+          height: 6rem;
+          width: 6rem;
+        }
+
+        &-info {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+
+          @include m.respond(mobile) {
+            align-items: flex-end;
+          }
         }
       }
     }
   }
 
-  &__bottom {
+  &__down {
     grid-area: bottom;
-    flex-direction: column;
+    position: relative;
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 100%;
 
-    &-date {
-      margin-bottom: 3rem;
+    &__bottom {
+      flex-direction: column;
+
+      &-date {
+        margin-bottom: 3rem;
+      }
     }
   }
 }

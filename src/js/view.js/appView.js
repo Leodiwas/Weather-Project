@@ -2,6 +2,8 @@ import { state } from "../model.js";
 
 export default class AppView {
   _parent = document.querySelector(".grid");
+  _gridUp = document.querySelector(".grid__up");
+  _cards = document.querySelector(".Weather-Cards");
   _overlayEl = document.querySelector(".overlay");
 
   constructor() {
@@ -10,9 +12,8 @@ export default class AppView {
   }
 
   _clear() {
-    state.daily.icon = [];
-    state.daily.main = [];
-    this._parent.innerHTML = "";
+    this._cards.innerHTML = "";
+    this._gridUp.innerHTML = "";
   }
 
   _overlay() {

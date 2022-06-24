@@ -13,8 +13,17 @@ export const state = {
     main: "",
   },
   wind: "",
-  daily: { icon: [], main: [] },
 };
+
+export const day = [
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thrusday",
+  "friday",
+  "saturday",
+];
 
 export const weatherState = (cityData, countryData) => {
   console.log(cityData, countryData);
@@ -34,12 +43,6 @@ export const weatherState = (cityData, countryData) => {
   const { speed } = cityData.wind;
   state.wind = speed;
 
-  countryData?.daily.forEach((el) => {
-    state.daily.icon.push(el.weather[0].icon);
-    state.daily.main.push(el.weather[0].main);
-  });
-
-  console.log(state.daily.main);
-
-  return weatherAppView._generateMarkup(state);
+  weatherAppView._generateMarkup(state);
+  return weatherAppView._generateCardMarkup(countryData);
 };
