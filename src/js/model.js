@@ -26,8 +26,6 @@ export const day = [
 ];
 
 export const weatherState = (cityData, countryData) => {
-  console.log(cityData, countryData);
-
   const { name } = cityData;
   state.city = name;
 

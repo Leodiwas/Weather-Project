@@ -27,7 +27,6 @@ class WeatherAppView extends AppView {
     return data.daily.forEach((el, i) => {
       let markUP;
       if (i <= 6) {
-        console.log(i);
         markUP = `
       <article class="Cards">
         <h4 class="weekday">Sunday</h4>

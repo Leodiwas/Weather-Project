@@ -30,12 +30,6 @@
     height: 100%;
     width: 100%;
     background-color: rgba(v.$color-black, 0.55);
-
-    @include m.respond(mobile) {
-      height: 0;
-      width: 0;
-      background-color: none !important;
-    }
   }
 
   .grid__up {
@@ -51,6 +45,7 @@
       grid-row-gap: 3.2rem;
       grid-template-rows: repeat(2, 1fr);
       grid-template-columns: 1fr;
+      margin-bottom: 6rem;
     }
 
     &__left,
