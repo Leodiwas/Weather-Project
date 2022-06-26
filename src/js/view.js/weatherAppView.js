@@ -29,7 +29,7 @@ class WeatherAppView extends AppView {
       if (i <= 6) {
         markUP = `
       <article class="Cards">
-        <h4 class="weekday">Sunday</h4>
+        <h4 class="weekday">${day[i]}</h4>
         <figure class="grid__left-weather-logo">
          <img src="https://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png" class="img__left img-responsive" alt="">
         </figure>

@@ -2,7 +2,27 @@ import { weatherState } from "./model.js";
 
 const API_KEY = "1c3104c319d355090fa8b3087965cc96";
 
-// export const defaultPosition = async
+const currectPosition = async () => {
+  try {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((success, _) => {
+        const { latitude, longitude } = success.coords;
+
+        console.log(latitude, longitude);
+
+        const getPositionApi = fetch(
+          `http://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=true`
+        );
+        console.log(getPositionApi);
+        // const positionData = getPositionApi.json();
+        // console.log(positionData);
+      });
+    }
+  } catch (err) {
+    throw err;
+  }
+};
+currectPosition();
 
 export const AJAX = async (city) => {
   try {

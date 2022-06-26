@@ -1,5 +1,3 @@
-import { state } from "../model.js";
-
 export default class AppView {
   _parent = document.querySelector(".grid");
   _gridUp = document.querySelector(".grid__up");
